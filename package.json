@@ -1,0 +1,27 @@
+{
+  "name": "cordova-firebase-plugin",
+  "version": "0.0.1",
+  "description": "A cordova plugin that wraps the Firebase SDK with an easy to use api.",
+  "cordova": {
+    "id": "cordova-firebase-plugin",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cambronjay/cordova-firebase-plugin.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "author": "Jay Cambron",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cambronjay/cordova-firebase-plugin/issues"
+  },
+  "homepage": "https://github.com/cambronjay/cordova-firebase-plugin#readme"
+}
