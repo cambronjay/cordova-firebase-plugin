@@ -42,7 +42,7 @@ static CordovaFirebasePlugin *firebasePlugin;
     firebasePlugin = self;
 }
 
-- (void)getFirebaseId:(CDVInvokedUrlCommand *)command {
+- (void)getFirebaseInstanceId:(CDVInvokedUrlCommand *)command {
     __block CDVPluginResult *pluginResult;
     FIRInstanceIDHandler handler = ^(NSString *_Nullable instID, NSError *_Nullable error) {
         if (error) {
@@ -154,7 +154,7 @@ static CordovaFirebasePlugin *firebasePlugin;
   }];
 }
 
-- (void)setBadgeNumber:(CDVInvokedUrlCommand *)command {
+- (void)setApplicationBadgeNumber:(CDVInvokedUrlCommand *)command {
     int number = [[command.arguments objectAtIndex:0] intValue];
 
     [self.commandDelegate runInBackground:^{
@@ -297,14 +297,14 @@ static CordovaFirebasePlugin *firebasePlugin;
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
-- (void)setScreenName:(CDVInvokedUrlCommand *)command {
+- (void)setAnalyticsScreenName:(CDVInvokedUrlCommand *)command {
     NSString* name = [command.arguments objectAtIndex:0];
     [FIRAnalytics setScreenName:name screenClass:NULL];
     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
-- (void)setUserID:(CDVInvokedUrlCommand *)command {
+- (void)setAnalyticsUserID:(CDVInvokedUrlCommand *)command {
     [self.commandDelegate runInBackground:^{
         NSString* id = [command.arguments objectAtIndex:0];
         [FIRAnalytics setUserID:id];
@@ -313,7 +313,7 @@ static CordovaFirebasePlugin *firebasePlugin;
     }];
 }
 
-- (void)setUserProperty:(CDVInvokedUrlCommand *)command {
+- (void)setAnalyticsUserProperty:(CDVInvokedUrlCommand *)command {
     [self.commandDelegate runInBackground:^{
         NSString* name = [command.arguments objectAtIndex:0];
         NSString* value = [command.arguments objectAtIndex:1];

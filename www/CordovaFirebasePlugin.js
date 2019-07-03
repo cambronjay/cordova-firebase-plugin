@@ -8,12 +8,8 @@ exports.verifyPhone = function (number, timeOutDuration, success, error) {
   }
 };
 
-exports.getInstanceId = function (success, error) {
-  exec(success, error, "CordovaFirebasePlugin", "getInstanceId", []);
-};
-
 exports.getFirebaseInstanceId = function (success, error) {
-  exec(success, error, "CordovaFirebasePlugin", "getFirebaseId", []);
+  exec(success, error, "CordovaFirebasePlugin", "getFirebaseInstanceId", []);
 };
 
 exports.getFirebaseToken = function (success, error) {
@@ -72,16 +68,16 @@ exports.setCrashlyticsUserID = function (userId, success, error) {
     exec(success, error, "CordovaFirebasePlugin", "setCrashlyticsUserID", [userId]);
 };
 
-exports.setScreenName = function (name, success, error) {
-  exec(success, error, "CordovaFirebasePlugin", "setScreenName", [name]);
+exports.setAnalyticsScreenName = function (name, success, error) {
+  exec(success, error, "CordovaFirebasePlugin", "setAnalyticsScreenName", [name]);
 };
 
-exports.setUserID = function (id, success, error) {
-  exec(success, error, "CordovaFirebasePlugin", "setUserID", [id]);
+exports.setAnalyticsUserID = function (id, success, error) {
+  exec(success, error, "CordovaFirebasePlugin", "setAnalyticsUserID", [id]);
 };
 
-exports.setUserProperty = function (name, value, success, error) {
-  exec(success, error, "CordovaFirebasePlugin", "setUserProperty", [name, value]);
+exports.setAnalyticsUserProperty = function (name, value, success, error) {
+  exec(success, error, "CordovaFirebasePlugin", "setAnalyticsUserProperty", [name, value]);
 };
 
 exports.implementRemoteConfig = function (success, error) {
