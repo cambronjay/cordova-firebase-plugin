@@ -1,8 +1,8 @@
 #import <Cordova/CDV.h>
 #import "AppDelegate.h"
 
-@interface FirebasePlugin : CDVPlugin
-+ (FirebasePlugin *) firebasePlugin;
+@interface CordovaFirebasePlugin : CDVPlugin
++ (CordovaFirebasePlugin *) cordovaFirebasePlugin;
 - (void)verifyPhone:(CDVInvokedUrlCommand*)command;
 - (void)getFirebaseInstanceId:(CDVInvokedUrlCommand*)command;
 - (void)getFirebaseToken:(CDVInvokedUrlCommand*)command;

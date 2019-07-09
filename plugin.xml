@@ -3,66 +3,50 @@
     xmlns="http://apache.org/cordova/ns/plugins/1.0" 
     xmlns:android="http://schemas.android.com/apk/res/android">
     <name>Cordova Firebase Plugin</name>
-    
-    <js-module name="CordovaFirebasePlugin" src="www/CordovaFirebasePlugin.js">
-        <clobbers target="cordova.plugins.CordovaFirebasePlugin" />
-    </js-module>
 
-    <platform name="android">
-        <config-file parent="/*" target="res/xml/config.xml">
-            <feature name="CordovaFirebasePlugin">
-                <param name="android-package" value="cordova-firebase-plugin.CordovaFirebasePlugin" />
-            </feature>
-        </config-file>
-        <config-file parent="/*" target="AndroidManifest.xml" />
-        <source-file src="src/android/CordovaFirebasePlugin.java" target-dir="src/cordova-firebase-plugin/CordovaFirebasePlugin" />
-    </platform>
+    <license>MIT</license>
+
+    <engines>
+        <engine name="cordova" version=">=3.2.0" />
+    </engines>
 
     <platform name="ios">
-        <hook type="after_plugin_install" src="scripts/ios/after_plugin_install.js" />
-        <hook type="before_plugin_uninstall" src="scripts/ios/before_plugin_uninstall.js" />
-
+        <hook type="after_plugin_install" src="scripts/ios/post_plugin_add.js" />
+        <hook type="after_platform_add" src="scripts/ios/post_plugin_add.js" />
+        <hook type="before_plugin_uninstall" src="scripts/ios/pre_plugin_remove.js" />
+        <js-module name="CordovaFirebasePlugin" src="www/CordovaFirebasePlugin.js">
+            <clobbers target="CordovaFirebasePlugin" />
+        </js-module>
         <config-file parent="/*" target="config.xml">
             <feature name="CordovaFirebasePlugin">
                 <param name="ios-package" value="CordovaFirebasePlugin" />
                 <param name="onload" value="true" />
             </feature>
         </config-file>
-
         <config-file parent="aps-environment" target="*/Entitlements-Debug.plist">
             <string>development</string>
         </config-file>
         <config-file parent="aps-environment" target="*/Entitlements-Release.plist">
             <string>production</string>
         </config-file>
-
         <resource-file src="src/ios/GoogleService-Info.plist" />
+
         <header-file src="src/ios/AppDelegate+CordovaFirebasePlugin.h" />
         <source-file src="src/ios/AppDelegate+CordovaFirebasePlugin.m" />
         <header-file src="src/ios/CordovaFirebasePlugin.h" />
         <source-file src="src/ios/CordovaFirebasePlugin.m" />
 
-        <header-file src="src/ios/Firebase.h" />
-        <source-file src="src/ios/CordovaFirebasePlugin.m" />
+        <podspec>
+            <config>
+                <source url="https://github.com/CocoaPods/Specs.git"/>
+            </config>
+            <pods use-frameworks="true">
+                <pod name="Fabric"/>
+                <pod name="Crashlytics" />
+                <pod name="FirebaseCore" />
+            </pods>
+        </podspec>
 
-        <framework custom="true" src="src/ios/Crashlytics/Crashlytics.framework" />
-        <framework custom="true" src="src/ios/Crashlytics/Fabric.framework" />
-        <framework custom="true" src="src/ios/Firebase/Analytics/GoogleAppMeasurement.framework" />
-        <framework custom="true" src="src/ios/Firebase/Analytics/MeasurementNanoPB.framework" />
-        <framework custom="true" src="src/ios/Firebase/Analytics/FirebaseCore.framework" />
-        <framework custom="true" src="src/ios/Firebase/Analytics/FirebaseAnalytics.framework" />
-        <framework custom="true" src="src/ios/Firebase/Analytics/GoogleUtilities.framework" />
-        <framework custom="true" src="src/ios/Firebase/Analytics/nanopb.framework" />
-        <framework custom="true" src="src/ios/Firebase/Analytics/FirebaseInstanceID.framework" />
-        <framework custom="true" src="src/ios/Firebase/Analytics/FirebaseCoreDiagnostics.framework" />
-        <framework custom="true" src="src/ios/Firebase/Auth/GTMSessionFetcher.framework" />
-        <framework custom="true" src="src/ios/Firebase/Auth/FirebaseAuth.framework" />
-        <framework custom="true" src="src/ios/Firebase/Messaging/FirebaseMessaging.framework" />
-        <framework custom="true" src="src/ios/Firebase/Performance/GoogleToolboxForMac.framework" />
-        <framework custom="true" src="src/ios/Firebase/Performance/FirebasePerformance.framework" />
-        <framework custom="true" src="src/ios/Firebase/RemoteConfig/Protobuf.framework" />
-        <framework custom="true" src="src/ios/Firebase/RemoteConfig/FirebaseRemoteConfig.framework" />
-        <framework custom="true" src="src/ios/Firebase/RemoteConfig/FirebaseABTesting.framework" />
     </platform>
-    <hook type="after_prepare" src="scripts/after_prepare.js" />
+    <hook type="after_prepare" src="scripts/post_prepare.js" />
 </plugin>

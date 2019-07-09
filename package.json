@@ -6,7 +6,8 @@
     "id": "cordova-firebase-plugin",
     "platforms": [
       "android",
-      "ios"
+      "ios",
+      "browser"
     ]
   },
   "repository": {
@@ -16,8 +17,22 @@
   "keywords": [
     "ecosystem:cordova",
     "cordova-android",
-    "cordova-ios"
+    "cordova-ios",
+    "cordova-browser",
+    "firebase",
+    "push",
+    "notifications",
+    "phone auth",
+    "cordova",
+    "crashlytics",
+    "events",
+    "device"
   ],
+  "scripts": {},
+  "dependencies": {
+    "xcode": "^1.0.0"
+  },
+  "devDependencies": {},
   "author": "Jay Cambron",
   "license": "MIT",
   "bugs": {

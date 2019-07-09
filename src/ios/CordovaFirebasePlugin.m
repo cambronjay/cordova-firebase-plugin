@@ -31,15 +31,15 @@
 @synthesize traces;
 
 static NSInteger const kNotificationStackSize = 10;
-static CordovaFirebasePlugin *firebasePlugin;
+static CordovaFirebasePlugin *cordovaFirebasePlugin;
 
-+ (CordovaFirebasePlugin *) firebasePlugin {
-    return firebasePlugin;
++ (CordovaFirebasePlugin *) cordovaFirebasePlugin {
+    return cordovaFirebasePlugin;
 }
 
 - (void)pluginInitialize {
     NSLog(@"Initializing the Cordova Firebase plugin");
-    firebasePlugin = self;
+    cordovaFirebasePlugin = self;
 }
 
 - (void)getFirebaseInstanceId:(CDVInvokedUrlCommand *)command {
