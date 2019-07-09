@@ -30,7 +30,6 @@
             <string>production</string>
         </config-file>
         <resource-file src="src/ios/GoogleService-Info.plist" />
-
         <header-file src="src/ios/AppDelegate+CordovaFirebasePlugin.h" />
         <source-file src="src/ios/AppDelegate+CordovaFirebasePlugin.m" />
         <header-file src="src/ios/CordovaFirebasePlugin.h" />
