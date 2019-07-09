@@ -26,9 +26,11 @@
     "cordova",
     "crashlytics",
     "events",
-    "device"
+    "device",
+    "ionic"
   ],
-  "scripts": {},
+  "scripts": {
+  },
   "dependencies": {
     "xcode": "^1.0.0"
   },
