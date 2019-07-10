@@ -1,6 +1,6 @@
 var fs = require("fs");
 var xcode = require("xcode");
-var comment = "\"Fabric.io: Crashlytics\"";
+var comment = "\"Firebase: Crashlytics\"";
 
 module.exports = {
     addBuildPhaseScript: function (context, projectPath) {

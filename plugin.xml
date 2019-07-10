@@ -7,9 +7,12 @@
     <license>MIT</license>
 
     <engines>
-        <engine name="cordova" version=">=3.2.0" />
+        <engine name="cordova" version=">=7.0.0" />
+        <engine name="cordova-android" version=">=6.3.0" />
+        <engine name="cordova-plugman" version=">=4.2.0" />
+        <engine name="cordova-ios" version=">=4.4.0" />
     </engines>
-
+    <hook type="before_prepare" src="scripts/pre_prepare.js" />
     <platform name="ios">
         <hook type="after_plugin_install" src="scripts/ios/post_plugin_add.js" />
         <hook type="after_platform_add" src="scripts/ios/post_plugin_add.js" />
@@ -34,18 +37,12 @@
         <source-file src="src/ios/AppDelegate+CordovaFirebasePlugin.m" />
         <header-file src="src/ios/CordovaFirebasePlugin.h" />
         <source-file src="src/ios/CordovaFirebasePlugin.m" />
-
-        <podspec>
-            <config>
-                <source url="https://github.com/CocoaPods/Specs.git"/>
-            </config>
-            <pods use-frameworks="true">
-                <pod name="Fabric"/>
-                <pod name="Crashlytics" />
-                <pod name="FirebaseCore" />
-            </pods>
-        </podspec>
-
+        <pods-config ios-min-version="9.0" use-frameworks="true">
+            <source url="https://github.com/CocoaPods/Specs.git"/>
+        </pods-config>
+        <pod name="Fabric"/>
+        <pod name="Crashlytics" />
+        <pod name="Firebase" />
     </platform>
     <hook type="after_prepare" src="scripts/post_prepare.js" />
 </plugin>

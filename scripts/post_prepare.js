@@ -6,7 +6,6 @@ var fs = require('fs');
 var utils = require("./utils");
 var config = fs.readFileSync('config.xml').toString();
 var name = utils.getValue(config, 'name');
-
 var IOS_DIR = 'platforms/ios';
 
 var PLATFORM = {
