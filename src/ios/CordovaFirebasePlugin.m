@@ -19,10 +19,6 @@
 #define NSFoundationVersionNumber_iOS_9_x_Max 1299
 #endif
 
-@interface CordovaFirebasePlugin : CDVPlugin {
-  
-}
-
 @implementation CordovaFirebasePlugin
 
 @synthesize notificationCallbackId;
@@ -287,7 +283,6 @@ static CordovaFirebasePlugin *cordovaFirebasePlugin;
         CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }];
-}
 }
 
 - (void)setCrashlyticsUserID:(CDVInvokedUrlCommand *)command {

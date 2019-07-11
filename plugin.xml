@@ -42,7 +42,7 @@
         </pods-config>
         <pod name="Fabric"/>
         <pod name="Crashlytics" />
-        <pod name="Firebase" />
+        <pod name="Firebase/Core" spec="~>5.20.2"/>
         <pod name='Firebase/AdMob' />
         <pod name='Firebase/Analytics' />
         <pod name='Firebase/Auth' />
