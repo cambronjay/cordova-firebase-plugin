@@ -78,28 +78,39 @@
     }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    [[FIRMessaging messaging] disconnect];
+    FIRMessaging.messaging.shouldEstablishDirectChannel = false;
+   // [[FIRMessaging messaging] disconnect];
     self.applicationInBackground = @(YES);
     NSLog(@"Disconnected from FCM");
 }
 
 - (void)tokenRefreshNotification:(NSNotification *)notification {
-    NSString *refreshedToken = [[FIRInstanceID instanceID] token];
-    NSLog(@"InstanceID token: %@", refreshedToken);
-    [self connectToFcm];
-    [CordovaFirebasePlugin.cordovaFirebasePlugin sendToken:refreshedToken];
+    [[FIRInstanceID instanceID] instanceIDWithHandler:^(FIRInstanceIDResult * _Nullable result,
+                                                        NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"Error fetching remote instance ID: %@", error);
+        } else {
+            NSLog(@"Remote instance ID token: %@", result.token);
+            [self connectToFcm];
+            [CordovaFirebasePlugin.cordovaFirebasePlugin sendToken:result.token];
+        }
+    }];
+   // NSString *refreshedToken = [[FIRInstanceID instanceID] token];
+   // NSLog(@"InstanceID token: %@", refreshedToken);
+  //  [self connectToFcm];
+  //  [CordovaFirebasePlugin.cordovaFirebasePlugin sendToken:refreshedToken];
 }
 
 - (void)connectToFcm {
-    [[FIRMessaging messaging] connectWithCompletion:^(NSError * _Nullable error) {
-        if (error != nil) {
-            NSLog(@"Unable to connect to FCM. %@", error);
-        } else {
-            NSLog(@"Connected to FCM.");
-            NSString *refreshedToken = [[FIRInstanceID instanceID] token];
-            NSLog(@"InstanceID token: %@", refreshedToken);
-        }
-    }];
+   // [[FIRMessaging messaging] connectWithCompletion:^(NSError * _Nullable error) {
+     //   if (error != nil) {
+   //         NSLog(@"Unable to connect to FCM. %@", error);
+     //   } else {
+     //       NSLog(@"Connected to FCM.");
+       //     NSString *refreshedToken = [[FIRInstanceID instanceID] token];
+       //     NSLog(@"InstanceID token: %@", refreshedToken);
+       // }
+   // }];
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {

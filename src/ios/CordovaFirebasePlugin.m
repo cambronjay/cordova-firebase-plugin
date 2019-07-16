@@ -52,8 +52,8 @@ static CordovaFirebasePlugin *cordovaFirebasePlugin;
 }
 
 - (void)getFirebaseToken:(CDVInvokedUrlCommand *)command {
-    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[[FIRInstanceID instanceID] token]];
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+//    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[[FIRInstanceID instanceID] token]];
+  //  [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 - (void)checkPermissions:(CDVInvokedUrlCommand *)command {
@@ -211,12 +211,12 @@ static CordovaFirebasePlugin *cordovaFirebasePlugin;
 }
 
 - (void)onFirebaseTokenRefresh:(CDVInvokedUrlCommand *)command {
-    self.tokenRefreshCallbackId = command.callbackId;
-    NSString* currentToken = [[FIRInstanceID instanceID] token];
+  //  self.tokenRefreshCallbackId = command.callbackId;
+  ///  NSString* currentToken = [[FIRInstanceID instanceID] token];
 
-    if (currentToken != nil) {
-        [self sendToken:currentToken];
-    }
+   // if (currentToken != nil) {
+    //    [self sendToken:currentToken];
+  //  }
 }
 
 - (void)sendNotification:(NSDictionary *)userInfo {
@@ -388,19 +388,19 @@ static CordovaFirebasePlugin *cordovaFirebasePlugin;
 }
 
 - (void)traceIncrementCounter:(CDVInvokedUrlCommand *)command {
-    [self.commandDelegate runInBackground:^{
-        NSString* traceName = [command.arguments objectAtIndex:0];
-        NSString* counterNamed = [command.arguments objectAtIndex:1];
-        CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-        FIRTrace *trace = (FIRTrace*)[self.traces objectForKey:traceName];
-        if (trace != nil) {
-            [trace incrementCounterNamed:counterNamed];
-            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-        } else {
-            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Performance Trace not found"];
-        }
-        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-    }];
+   // [self.commandDelegate runInBackground:^{
+   //     NSString* traceName = [command.arguments objectAtIndex:0];
+   //     NSString* counterNamed = [command.arguments objectAtIndex:1];
+   //     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+   //     FIRTrace *trace = (FIRTrace*)[self.traces objectForKey:traceName];
+   //     if (trace != nil) {
+    //        [trace incrementCounterNamed:counterNamed];
+    //        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    //    } else {
+     //       pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Performance Trace not found"];
+     //   }
+    //    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+  //  }];
 }
 
 - (void)stopPerformanceTrace:(CDVInvokedUrlCommand *)command {
@@ -420,12 +420,12 @@ static CordovaFirebasePlugin *cordovaFirebasePlugin;
 }
 
 - (void)enableAnalyticsReporting:(CDVInvokedUrlCommand *)command {
-     [self.commandDelegate runInBackground:^{
-        BOOL enabled = [[command argumentAtIndex:0] boolValue];
-        [[FIRAnalyticsConfiguration sharedInstance] setAnalyticsCollectionEnabled:enabled];
-        CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-     }];
+     //[self.commandDelegate runInBackground:^{
+     //   BOOL enabled = [[command argumentAtIndex:0] boolValue];
+    //    [[FIRAnalyticsConfiguration sharedInstance] setAnalyticsCollectionEnabled:enabled];
+    //    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    //    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+   //  }];
 }
 
 - (void)enablePerformanceReporting:(CDVInvokedUrlCommand *)command {

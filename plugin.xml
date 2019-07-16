@@ -5,7 +5,11 @@
     <name>Cordova Firebase Plugin</name>
 
     <license>MIT</license>
-
+    <!-- add to info.plist
+    <key>GADIsAdManagerApp</key>
+<true/>
+<key>GADApplicationIdentifier</key>
+<string>ca-app-pub-3940256099942544~1458002511</string> -->
     <engines>
         <engine name="cordova" version=">=7.0.0" />
         <engine name="cordova-android" version=">=6.3.0" />
@@ -40,9 +44,9 @@
         <pods-config ios-min-version="9.0" use-frameworks="true">
             <source url="https://github.com/CocoaPods/Specs.git"/>
         </pods-config>
+        <pod name="Firebase/Core"/>
         <pod name="Fabric"/>
         <pod name="Crashlytics" />
-        <pod name="Firebase/Core" spec="~>5.20.2"/>
         <pod name='Firebase/AdMob' />
         <pod name='Firebase/Analytics' />
         <pod name='Firebase/Auth' />
