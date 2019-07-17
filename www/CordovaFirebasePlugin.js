@@ -129,9 +129,9 @@ exports.startPerformanceTrace = function (name, success, error) {
   exec(success, error, "CordovaFirebasePlugin", "startPerformanceTrace", [name]);
 };
 
-exports.traceIncrementCounter = function (name, counterNamed, success, error) {
-  exec(success, error, "CordovaFirebasePlugin", "traceIncrementCounter", [name, counterNamed]);
-};
+// exports.traceIncrementCounter = function (name, counterNamed, success, error) {
+//   exec(success, error, "CordovaFirebasePlugin", "traceIncrementCounter", [name, counterNamed]);
+// };
 
 exports.stopPerformanceTrace = function (name, success, error) {
   exec(success, error, "CordovaFirebasePlugin", "stopPerformanceTrace", [name]);

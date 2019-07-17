@@ -28,7 +28,7 @@
 - (void)implementRemoteConfig:(CDVInvokedUrlCommand*)command;
 - (void)getRemoteConfigValue:(CDVInvokedUrlCommand*)command;
 - (void)startPerformanceTrace:(CDVInvokedUrlCommand*)command;
-- (void)traceIncrementCounter:(CDVInvokedUrlCommand*)command;
+//- (void)traceIncrementCounter:(CDVInvokedUrlCommand*)command;
 - (void)stopPerformanceTrace:(CDVInvokedUrlCommand*)command;
 - (void)enableAnalyticsReporting:(CDVInvokedUrlCommand*)command;
 - (void)enablePerformanceReporting:(CDVInvokedUrlCommand*)command;

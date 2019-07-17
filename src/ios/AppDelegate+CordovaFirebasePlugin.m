@@ -78,7 +78,7 @@
     }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    FIRMessaging.messaging.shouldEstablishDirectChannel = false;
+ //   FIRMessaging.messaging.shouldEstablishDirectChannel = false;
    // [[FIRMessaging messaging] disconnect];
     self.applicationInBackground = @(YES);
     NSLog(@"Disconnected from FCM");
@@ -102,6 +102,8 @@
 }
 
 - (void)connectToFcm {
+    FIRMessaging.messaging.shouldEstablishDirectChannel = YES;
+    //[FIRMessaging messaging].shouldEstablishDirectChannel = YES;
    // [[FIRMessaging messaging] connectWithCompletion:^(NSError * _Nullable error) {
      //   if (error != nil) {
    //         NSLog(@"Unable to connect to FCM. %@", error);
