@@ -64,8 +64,8 @@
         [UNUserNotificationCenter currentNotificationCenter].delegate = self;
 #endif
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenRefreshNotification:)
-                                                 name:kFIRInstanceIDTokenRefreshNotification object:nil];
+  //  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenRefreshNotification:)
+                                                // name:kFIRInstanceIDTokenRefreshNotification object:nil];
 
     self.applicationInBackground = @(YES);
 
@@ -73,7 +73,7 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    [self connectToFcm];
+    //[self connectToFcm];
     self.applicationInBackground = @(NO);
     }
 

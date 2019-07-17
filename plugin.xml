@@ -52,7 +52,7 @@
         <pod name='Firebase/Auth' />
         <pod name='Firebase/Firestore' />
         <pod name='Firebase/Functions' />
-        <pod name='Firebase/Messaging' />
+        <!-- <pod name='Firebase/Messaging' /> -->
         <pod name='Firebase/Storage' />
         <pod name='Firebase/DynamicLinks' />
         <pod name='Firebase/InAppMessaging' />
