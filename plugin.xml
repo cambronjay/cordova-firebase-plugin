@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova-firebase-plugin" version="0.0.22" 
+<plugin id="cordova-firebase-plugin" version="0.0.24" 
     xmlns="http://apache.org/cordova/ns/plugins/1.0" 
     xmlns:android="http://schemas.android.com/apk/res/android">
     <name>Cordova Firebase Plugin</name>
@@ -66,15 +66,12 @@
         <framework src="lib/ios/Firebase/Performance/FirebasePerformance.framework" custom="true" />
         <framework src="lib/ios/Firebase/Performance/FirebaseRemoteConfig.framework" custom="true" />
         <framework src="lib/ios/Firebase/Performance/GoogleToolboxForMac.framework" custom="true" />
-        <framework src="lib/ios/Firebase/Performance/GTMSessionFetcher.framework" custom="true" />
         <framework src="lib/ios/Firebase/Performance/Protobuf.framework" custom="true" />
         <!-- Messaging -->
         <framework src="lib/ios/Firebase/Messaging/FirebaseMessaging.framework" custom="true" />
-        <framework src="lib/ios/Firebase/Messaging/Protobuf.framework" custom="true" />
         <!-- Remote Config -->
         <framework src="lib/ios/Firebase/RemoteConfig/FirebaseABTesting.framework" custom="true" />
-        <framework src="lib/ios/Firebase/RemoteConfig/FirebaseRemoteConfig.framework" custom="true" />
-        <framework src="lib/ios/Firebase/RemoteConfig/Protobuf.framework" custom="true" />        
+        <framework src="lib/ios/Firebase/RemoteConfig/FirebaseRemoteConfig.framework" custom="true" />       
         <!-- Database -->
         <!-- <framework src="lib/ios/Firebase/Database/FirebaseDatabase.framework" custom="true" />
         <framework src="lib/ios/Firebase/Database/leveldb-library.framework" custom="true" /> -->
