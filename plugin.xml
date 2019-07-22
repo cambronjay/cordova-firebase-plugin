@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova-firebase-plugin" version="0.0.20" 
+<plugin id="cordova-firebase-plugin" version="0.0.22" 
     xmlns="http://apache.org/cordova/ns/plugins/1.0" 
     xmlns:android="http://schemas.android.com/apk/res/android">
     <name>Cordova Firebase Plugin</name>
@@ -16,7 +16,7 @@
         <engine name="cordova-plugman" version=">=4.2.0" />
         <engine name="cordova-ios" version=">=4.4.0" />
     </engines>
-    <hook type="before_prepare" src="scripts/pre_prepare.js" />
+    <!-- <hook type="before_prepare" src="scripts/pre_prepare.js" /> -->
     <platform name="ios">
         <hook type="after_plugin_install" src="scripts/ios/post_plugin_add.js" />
         <hook type="after_platform_add" src="scripts/ios/post_plugin_add.js" />
@@ -41,13 +41,58 @@
         <source-file src="src/ios/AppDelegate+CordovaFirebasePlugin.m" />
         <header-file src="src/ios/CordovaFirebasePlugin.h" />
         <source-file src="src/ios/CordovaFirebasePlugin.m" />
-        <pods-config ios-min-version="9.0" use-frameworks="true">
+        <!-- Frameworks -->
+        <framework src="libz.dylib" />
+        <framework src="libc++.dylib" />
+        <framework src="SystemConfiguration.framework" />
+        <framework src="Security.framework" weak="true" />
+        <!-- Crashlytics -->
+        <framework src="lib/ios/fabric/Fabric.framework" custom="true" />
+        <framework src="lib/ios/crashlytics/Crashlytics.framework" custom="true" />
+        <!-- Analytics -->
+        <framework src="lib/ios/Firebase/Analytics/FIRAnalyticsConnector.framework" custom="true" />
+        <framework src="lib/ios/Firebase/Analytics/FirebaseAnalytics.framework" custom="true" />
+        <framework src="lib/ios/Firebase/Analytics/FirebaseCore.framework" custom="true" />
+        <framework src="lib/ios/Firebase/Analytics/FirebaseCoreDiagnostics.framework" custom="true" />
+        <framework src="lib/ios/Firebase/Analytics/FirebaseInstanceID.framework" custom="true" />
+        <framework src="lib/ios/Firebase/Analytics/GoogleAppMeasurement.framework" custom="true" />
+        <framework src="lib/ios/Firebase/Analytics/GoogleUtilities.framework" custom="true" />
+        <framework src="lib/ios/Firebase/Analytics/nanopb.framework" custom="true" />
+        <!-- Auth -->
+        <framework src="lib/ios/Firebase/Auth/FirebaseAuth.framework" custom="true" />
+        <framework src="lib/ios/Firebase/Auth/GTMSessionFetcher.framework" custom="true" />
+        <!-- Performance -->
+        <framework src="lib/ios/Firebase/Performance/FirebaseABTesting.framework" custom="true" />
+        <framework src="lib/ios/Firebase/Performance/FirebasePerformance.framework" custom="true" />
+        <framework src="lib/ios/Firebase/Performance/FirebaseRemoteConfig.framework" custom="true" />
+        <framework src="lib/ios/Firebase/Performance/GoogleToolboxForMac.framework" custom="true" />
+        <framework src="lib/ios/Firebase/Performance/GTMSessionFetcher.framework" custom="true" />
+        <framework src="lib/ios/Firebase/Performance/Protobuf.framework" custom="true" />
+        <!-- Messaging -->
+        <framework src="lib/ios/Firebase/Messaging/FirebaseMessaging.framework" custom="true" />
+        <framework src="lib/ios/Firebase/Messaging/Protobuf.framework" custom="true" />
+        <!-- Remote Config -->
+        <framework src="lib/ios/Firebase/RemoteConfig/FirebaseABTesting.framework" custom="true" />
+        <framework src="lib/ios/Firebase/RemoteConfig/FirebaseRemoteConfig.framework" custom="true" />
+        <framework src="lib/ios/Firebase/RemoteConfig/Protobuf.framework" custom="true" />        
+        <!-- Database -->
+        <!-- <framework src="lib/ios/Firebase/Database/FirebaseDatabase.framework" custom="true" />
+        <framework src="lib/ios/Firebase/Database/leveldb-library.framework" custom="true" /> -->
+        <!-- DynamicLinks -->
+        <!-- <framework src="lib/ios/Firebase/DynamicLinks/FirebaseDynamicLinks.framework" custom="true" /> -->
+        <!-- Firestore -->
+        <!-- <framework src="lib/ios/Firebase/Firestore/BoringSSL-GRPC.framework" custom="true" />
+        <framework src="lib/ios/Firebase/Firestore/FirebaseFirestore.framework" custom="true" />
+        <framework src="lib/ios/Firebase/Firestore/gRPC-C++.framework" custom="true" />
+        <framework src="lib/ios/Firebase/Firestore/gRPC-Core.framework" custom="true" />
+        <framework src="lib/ios/Firebase/Firestore/leveldb-library.framework" custom="true" />
+        <framework src="lib/ios/Firebase/Firestore/Protobuf.framework" custom="true" /> -->
+        <!-- <pods-config ios-min-version="9.0" use-frameworks="true">
             <source url="https://github.com/CocoaPods/Specs.git"/>
         </pods-config>
         <pod name="Firebase/Core"/>
         <pod name="Fabric"/>
         <pod name="Crashlytics" />
-        <!-- <pod name='Firebase/AdMob' /> -->
         <pod name='Firebase/Analytics' />
         <pod name='Firebase/Auth' />
         <pod name='Firebase/Firestore' />
@@ -55,11 +100,13 @@
         <pod name='Firebase/Messaging' />
         <pod name='Firebase/Storage' />
         <pod name='Firebase/DynamicLinks' />
-        <pod name='Firebase/InAppMessaging' />
-        <pod name='Firebase/InAppMessagingDisplay' />
         <pod name='Firebase/Database' />
         <pod name='Firebase/Performance' />
-        <pod name='Firebase/RemoteConfig' />
+        <pod name='Firebase/RemoteConfig' /> -->
+
+<!-- <pod name='Firebase/AdMob' />
+<pod name='Firebase/InAppMessaging' />
+<pod name='Firebase/InAppMessagingDisplay' /> -->
 
     </platform>
     <hook type="after_prepare" src="scripts/post_prepare.js" />
