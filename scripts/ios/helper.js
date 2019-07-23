@@ -1,14 +1,19 @@
 var fs = require("fs");
-var xcode = require("xcode");
+//var xcode = require("xcode");
 var comment = "\"Firebase: Crashlytics\"";
-
+var utils = require("../utils");
 module.exports = {
-    addBuildPhaseScript: function (context, projectPath) {
-        var project = xcode.project(projectPath);
-        project.parseSync();
-        var buildScript = '"\\"${PODS_ROOT}/Fabric/run\\""';
-        var id = project.generateUuid();
-        project.hash.project.objects.PBXShellScriptBuildPhase[id] = {
+    addBuildPhaseScript: function (context, xcodeProjectPath) {
+        var xcode = context.requireCordovaModule("xcode");
+        var xcodeProject = xcode.project(xcodeProjectPath);
+        xcodeProject.parseSync();
+
+        var script = "${SRCROOT}/" + utils.getAppName(context) + "/Plugins/cordova-firebase-plugin/Fabric.framework/run";
+
+
+        var id = xcodeProject.generateUuid();
+
+        xcodeProject.hash.project.objects.PBXShellScriptBuildPhase[id] = {
             isa: "PBXShellScriptBuildPhase",
             buildActionMask: 2147483647,
             files: [],
@@ -17,50 +22,63 @@ module.exports = {
             outputPaths: [],
             runOnlyForDeploymentPostprocessing: 0,
             shellPath: "/bin/sh",
-            shellScript: buildScript,
+            shellScript: script,
             showEnvVarsInLog: 0
         };
-        project.hash.project.objects.PBXShellScriptBuildPhase[id + "_comment"] = comment;
-        for (var targetId in project.hash.project.objects.PBXNativeTarget) {
-            if (targetId.indexOf("_comment") !== -1) {
+
+        xcodeProject.hash.project.objects.PBXShellScriptBuildPhase[id + "_comment"] = comment;
+
+        for (var nativeTargetId in xcodeProject.hash.project.objects.PBXNativeTarget) {
+
+            if (nativeTargetId.indexOf("_comment") !== -1) {
                 continue;
             }
-            var target = project.hash.project.objects.PBXNativeTarget[targetId];
-            target.buildPhases.push({
+
+            var nativeTarget = xcodeProject.hash.project.objects.PBXNativeTarget[nativeTargetId];
+
+            nativeTarget.buildPhases.push({
                 value: id,
                 comment: comment
             });
         }
-        fs.writeFileSync(projectPath, project.writeSync());
+
+        fs.writeFileSync(xcodeProjectPath, xcodeProject.writeSync());
     },
 
-    removeBuildPhaseScript: function (context, projectPath) {
-        var project = xcode.project(projectPath);
-        project.parseSync();
-        var phases = project.hash.project.objects.PBXShellScriptBuildPhase;
-        for (var phaseId in phases) {
-            var phase = project.hash.project.objects.PBXShellScriptBuildPhase[phaseId];
-            var deleteComment = false;
-            if (phaseId.indexOf("_comment") === -1) {
-                deleteComment = phase.name && phase.name.indexOf(comment) !== -1;
-            } else {
-                deleteComment = phaseId === comment;
+    removeBuildPhaseScript: function (context, xcodeProjectPath) {
+        var xcode = context.requireCordovaModule("xcode");
+        var xcodeProject = xcode.project(xcodeProjectPath);
+        xcodeProject.parseSync();
+        var buildPhases = xcodeProject.hash.project.objects.PBXShellScriptBuildPhase;
+        for (var buildPhaseId in buildPhases) {
+            var buildPhase = xcodeProject.hash.project.objects.PBXShellScriptBuildPhase[buildPhaseId];
+            var shouldDelete = false;
+            if (buildPhaseId.indexOf("_comment") === -1) {
+                shouldDelete = buildPhase.name && buildPhase.name.indexOf(comment) !== -1;
             }
-
-            if (deleteComment) {
-                delete phases[phaseId];
+            else {
+                shouldDelete = buildPhaseId === comment;
+            }
+            if (shouldDelete) {
+                delete buildPhases[buildPhaseId];
             }
         }
-        var targets = project.hash.project.objects.PBXNativeTarget;
-        for (var targetId in targets) {
-            if (targetId.indexOf("_comment") !== -1) {
+
+        var nativeTargets = xcodeProject.hash.project.objects.PBXNativeTarget;
+
+        for (var nativeTargetId in nativeTargets) {
+
+            if (nativeTargetId.indexOf("_comment") !== -1) {
                 continue;
             }
-            var target = targets[targetId];
-            target.buildPhases = target.buildPhases.filter(function (buildPhase) {
+
+            var nativeTarget = nativeTargets[nativeTargetId];
+
+            nativeTarget.buildPhases = nativeTarget.buildPhases.filter(function (buildPhase) {
                 return buildPhase.comment !== comment;
             });
         }
-        fs.writeFileSync(projectPath, project.writeSync());
+
+        fs.writeFileSync(xcodeProjectPath, xcodeProject.writeSync());
     }
 };
