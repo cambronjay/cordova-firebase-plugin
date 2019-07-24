@@ -8,8 +8,8 @@ module.exports = {
         var xcodeProject = xcode.project(xcodeProjectPath);
         xcodeProject.parseSync();
 
-        var script = "${SRCROOT}/" + utils.getAppName(context) + "/Plugins/cordova-firebase-plugin/Fabric.framework/run";
-
+        var s = "${PROJECT_DIR}/" + utils.getAppName(context) + "/Plugins/cordova-firebase-plugin/Fabric.framework/run";
+        var script = '"' + s + '"';
 
         var id = xcodeProject.generateUuid();
 
