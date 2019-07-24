@@ -1,5 +1,7 @@
 var path = require("path");
 var fs = require("fs");
+var safePattern = /^[a-z0-9_\/\-.,?:@#%^+=\[\]]*$/i;
+var safeishPattern = /^[a-z0-9_\/\-.,?:@#%^+=\[\]{}|&()<>; *']*$/i;
 
 fs.ensureDirSync = function (dir) {
     if (!fs.existsSync(dir)) {
@@ -14,6 +16,14 @@ fs.ensureDirSync = function (dir) {
 };
 
 module.exports = {
+    bashEscape: function (arg) {
+        if (safePattern.test(arg)) return arg;
+        if (safeishPattern.test(arg)) return '"' + arg + '"';
+        return "'" + arg.replace(/'+/g, function (val) {
+            if (val.length < 3) return "'" + val.replace(/'/g, "\\'") + "'";
+            return "'\"" + val + "\"'";
+        }) + "'";
+    },
     getAppName: function (context) {
         var ConfigParser = context.requireCordovaModule("cordova-lib").configparser;
         var config = new ConfigParser("config.xml");

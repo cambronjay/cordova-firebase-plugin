@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova-firebase-plugin" version="0.0.27" 
+<plugin id="cordova-firebase-plugin" version="0.0.28" 
     xmlns="http://apache.org/cordova/ns/plugins/1.0" 
     xmlns:android="http://schemas.android.com/apk/res/android">
     <name>Cordova Firebase Plugin</name>
@@ -30,18 +30,27 @@
                 <param name="onload" value="true" />
             </feature>
         </config-file>
-        <config-file parent="aps-environment" target="*/Entitlements-Debug.plist">
+        <!-- <edit-config target="*" file="config.xml" mode="merge">
+            <edit-config file="*-Info.plist" mode="merge" target="FirebaseAppDelegateProxyEnabled">
+                <false />
+            </edit-config>
+        </edit-config> -->
+
+    <config-file target="*-Info.plist" parent="FirebaseAppDelegateProxyEnabled">
+         <false />
+    </config-file>
+        <!-- <config-file parent="aps-environment" target="*/Entitlements-Debug.plist">
             <string>development</string>
         </config-file>
         <config-file parent="aps-environment" target="*/Entitlements-Release.plist">
             <string>production</string>
-        </config-file>
+        </config-file> -->
         <resource-file src="src/ios/GoogleService-Info.plist" />
         <header-file src="src/ios/AppDelegate+CordovaFirebasePlugin.h" />
         <source-file src="src/ios/AppDelegate+CordovaFirebasePlugin.m" />
         <header-file src="src/ios/CordovaFirebasePlugin.h" />
         <source-file src="src/ios/CordovaFirebasePlugin.m" />
-         <header-file src="lib/ios/Firebase/Firebase.h" />
+        <header-file src="lib/ios/Firebase/Firebase.h" />
         <!-- Frameworks -->
         <framework src="libz.dylib" />
         <framework src="libc++.dylib" />
@@ -70,7 +79,7 @@
         <!-- Messaging -->
         <framework src="lib/ios/Firebase/Messaging/FirebaseMessaging.framework" custom="true" />
         <!-- Remote Config -->
-        <framework src="lib/ios/Firebase/RemoteConfig/FirebaseRemoteConfig.framework" custom="true" />       
+        <framework src="lib/ios/Firebase/RemoteConfig/FirebaseRemoteConfig.framework" custom="true" />
         <!-- Database -->
         <!-- <framework src="lib/ios/Firebase/Database/FirebaseDatabase.framework" custom="true" />
         <framework src="lib/ios/Firebase/Database/leveldb-library.framework" custom="true" /> -->
@@ -100,7 +109,7 @@
         <pod name='Firebase/Performance' />
         <pod name='Firebase/RemoteConfig' /> -->
 
-<!-- <pod name='Firebase/AdMob' />
+        <!-- <pod name='Firebase/AdMob' />
 <pod name='Firebase/InAppMessaging' />
 <pod name='Firebase/InAppMessagingDisplay' /> -->
 
