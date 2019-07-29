@@ -64,8 +64,8 @@
         [UNUserNotificationCenter currentNotificationCenter].delegate = self;
 #endif
 
-  //  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenRefreshNotification:)
-                                                // name:kFIRInstanceIDTokenRefreshNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenRefreshNotification:)
+                                                 name:kFIRInstanceIDTokenRefreshNotification object:nil];
 
     self.applicationInBackground = @(YES);
 
@@ -73,13 +73,12 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    //[self connectToFcm];
+    [self connectToFcm];
     self.applicationInBackground = @(NO);
     }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
- //   FIRMessaging.messaging.shouldEstablishDirectChannel = false;
-   // [[FIRMessaging messaging] disconnect];
+    FIRMessaging.messaging.shouldEstablishDirectChannel = false;
     self.applicationInBackground = @(YES);
     NSLog(@"Disconnected from FCM");
 }
@@ -95,24 +94,19 @@
             [CordovaFirebasePlugin.cordovaFirebasePlugin sendToken:result.token];
         }
     }];
-   // NSString *refreshedToken = [[FIRInstanceID instanceID] token];
-   // NSLog(@"InstanceID token: %@", refreshedToken);
-  //  [self connectToFcm];
-  //  [CordovaFirebasePlugin.cordovaFirebasePlugin sendToken:refreshedToken];
 }
 
 - (void)connectToFcm {
     FIRMessaging.messaging.shouldEstablishDirectChannel = YES;
-    //[FIRMessaging messaging].shouldEstablishDirectChannel = YES;
-   // [[FIRMessaging messaging] connectWithCompletion:^(NSError * _Nullable error) {
-     //   if (error != nil) {
-   //         NSLog(@"Unable to connect to FCM. %@", error);
-     //   } else {
-     //       NSLog(@"Connected to FCM.");
-       //     NSString *refreshedToken = [[FIRInstanceID instanceID] token];
-       //     NSLog(@"InstanceID token: %@", refreshedToken);
-       // }
-   // }];
+    [[FIRInstanceID instanceID] instanceIDWithHandler:^(FIRInstanceIDResult * _Nullable result,
+                                                        NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"Error fetching remote instance ID: %@", error);
+        } else {
+            NSLog(@"Remote instance ID token: %@", result.token);
+            [CordovaFirebasePlugin.cordovaFirebasePlugin sendToken:result.token];
+        }
+    }];
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {

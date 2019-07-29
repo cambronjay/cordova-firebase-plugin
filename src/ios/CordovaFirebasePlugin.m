@@ -62,8 +62,20 @@ static CordovaFirebasePlugin *cordovaFirebasePlugin;
             [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
         }
     }];
-//    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[[FIRInstanceID instanceID] token]];
-  //  [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    
+    [[FIRInstanceID instanceID] instanceIDWithHandler:^(FIRInstanceIDResult * _Nullable result,
+                                                        NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"Error fetching remote instance ID: %@", error);
+        } else {
+            NSLog(@"Remote instance ID token: %@", result.token);
+            
+            CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:result.token];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        }
+    }];
+    
+   
 }
 
 - (void)checkPermissions:(CDVInvokedUrlCommand *)command {
@@ -233,12 +245,6 @@ static CordovaFirebasePlugin *cordovaFirebasePlugin;
               }
         }
     }];
-  //  self.tokenRefreshCallbackId = command.callbackId;
-  ///  NSString* currentToken = [[FIRInstanceID instanceID] token];
-
-   // if (currentToken != nil) {
-    //    [self sendToken:currentToken];
-  //  }
 }
 
 - (void)sendNotification:(NSDictionary *)userInfo {
