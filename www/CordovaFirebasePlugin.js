@@ -60,8 +60,8 @@ exports.addCrashLog = function (message, success, error) {
   exec(success, error, "CordovaFirebasePlugin", "addCrashLog", [message]);
 };
 
-exports.reportNonFatalCrash = function (message, success, error) {
-  exec(success, error, "CordovaFirebasePlugin", "reportNonFatalCrash", [message]);
+exports.reportNonFatalCrash = function (name, message, url, stackTrace, success, error) {
+  exec(success, error, "CordovaFirebasePlugin", "reportNonFatalCrash", [name, message, url, stackTrace]);
 };
 
 exports.setCrashlyticsUserID = function (userId, success, error) {

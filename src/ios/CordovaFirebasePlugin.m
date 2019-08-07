@@ -302,6 +302,7 @@ static CordovaFirebasePlugin *cordovaFirebasePlugin;
 
 - (void)reportNonFatalCrash:(CDVInvokedUrlCommand *)command {
     [self.commandDelegate runInBackground:^{
+       //NSLog(@"%@", eStackTrace);
         NSString* errorName = [command.arguments objectAtIndex:0];
         NSString* errorMessage = [command.arguments objectAtIndex:1];
         NSString* errorUrl = [command.arguments objectAtIndex:2];
@@ -311,12 +312,11 @@ static CordovaFirebasePlugin *cordovaFirebasePlugin;
         NSString *eMessage = NSLocalizedString(errorMessage, @"");
         NSString *eUrl = NSLocalizedString(errorUrl, @"");
         NSString *eStackTrace = NSLocalizedString(errorStackTrace, @"");
-        NSDictionary *userInfo = @{ 
-            Name : eName,
-            Message: eMessage,
-            Url: eUrl, 
-            StackTrace: eStackTrace
-        };
+        NSString *Name = @"Name";
+        NSString *Message = @"Message";
+        NSString *Url = @"Url";
+        NSString *StackTrace = @"StackTrace";
+        NSDictionary *userInfo = @{ Name : eName, Message: eMessage, Url: eUrl, StackTrace: eStackTrace };
         NSError *error = [NSError errorWithDomain:domain code:-101 userInfo:userInfo];
         [CrashlyticsKit recordError:error];
         CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
