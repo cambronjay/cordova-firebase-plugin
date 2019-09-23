@@ -303,7 +303,7 @@ static CordovaFirebasePlugin *cordovaFirebasePlugin;
 - (void)reportNonFatalCrash:(CDVInvokedUrlCommand *)command {
     [self.commandDelegate runInBackground:^{
        //NSLog(@"%@", eStackTrace);
-        NSString* domain = [command.arguments objectAtIndex:0]
+        NSString* domain = [command.arguments objectAtIndex:0];
         NSString* errorName = [command.arguments objectAtIndex:1];
         NSString* errorMessage = [command.arguments objectAtIndex:2];
         NSString* errorUrl = [command.arguments objectAtIndex:3];
