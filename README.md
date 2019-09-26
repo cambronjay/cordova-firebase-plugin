@@ -91,13 +91,15 @@ CordovaFirebasePlugin.reportEvent("Login_Success", {timestamp:new Date()} );
 ```
 CordovaFirebasePlugin.setAnalyticsUserProperty("Role", "Admin");
 ```
-### Note
-- Check out the CordovaFirebasePlugin.js file for more commands
 
 - Example Crashlytics reporting of Javascript/Typescript errors:
 ```
 CordovaFirebasePlugin.reportNonFatalCrash("errorName", "errorMessage", "errorUrl", "stackTrace");
 ```
+
+### Note
+- Check out the CordovaFirebasePlugin.js file for more commands
+
 ### Note
 - Native erros will be caught and reported automatically to Crashlytics
 - Javascript/Non-fatal errors will be categorized by the length of the error in Crashlytics
