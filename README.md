@@ -1,5 +1,103 @@
 # Cordova Firebase Plugin
-This plugin wraps the entire Firebase SDK with an easy to use api and solid documentation.
-This plugin will automatically set everything up for you. Just place your GoogleService-Info.plist file in the same location as your config.xml and make sure you have version 3.2.1 or greater of cordova-sqlite-storage.
-*** This plugin currently supports iOS and will support android in the next week. Also, typings will be added soon!
-***Documentation is coming soon.
+This plugin wraps the entire Firebase SDK with an easy to use api and detailed documentation. Follow the below instructions for setup and use.
+
+## Supported Cordova Versions
+- cordova: `>= 6`
+- cordova-ios: `>= 4`
+
+## Plugin Dependency
+- cordova-sqlite-storage: `>=3.2.1`
+
+### Setup Firebase
+1. Create a Firebase account if you don't already have one 
+2. View [Firebase setup](https://support.google.com/firebase/answer/9326094?hl=en&ref_topic=6400762) on how to add an app. 
+3. Add an ios app.
+4. Register the app in step 1 of the prompt
+5. Download the config file for later use. 
+6. Skip step 3 and 4 of the prompt
+7. Leave the browser open on step 5 and continue to the Project Setup below.
+
+### Project Setup for the Plugin
+Install the above plugin dependency if you don't already have it installed. Place your Firebase configuration file (GoogleService-Info.plist) into the root folder of your project. View [Firebase support](https://support.google.com/firebase/answer/7015592) for details on how to download the file if you did not download it in the above Firebase Setup.
+
+```
+- My Project/
+    platforms/
+    plugins/
+    www/
+    config.xml
+    GoogleService-Info.plist   <--
+    ...
+```
+
+## Install the Plugin
+Install the plugin with this command:
+```
+cordova plugin add cordova-firebase-plugin --save
+```
+or for Ionic this command:
+```
+ionic cordova plugin add cordova-firebase-plugin
+```
+or add this to your config.xml: 
+```
+<plugin name="cordova-firebase-plugin" spec="^1.0.0" />
+```
+
+## Build the app and it will be added to Firebase
+1. Build your app and run it with Xcode on a conected device or simulator
+2. Click the stop button on Xcode and then press the play button
+3. The opened Firebase tab from the above Firebase Setup should pick up the app activation
+4. If Firebase does not give a success message then uninstall the app from the simulator or connected device and then repeat steps 1-4
+
+## Crashlytics Setup
+1. Open Firebase Crashlytics in your browser after adding your app to Firebase successfully via the above app build process 
+2. Click "Setup Crashlytics"
+3. Select "No, Setup a new Firebase app
+4. Click "Go to Crashlytics Docs"
+5. Navigate back to the Firebase Crashlytics tab on your browser
+6. Build your app and run it with Xcode on a connected device or simulator
+7. Click the stop button on Xcode and then press the play button
+8. The opened Firebase Crashlytics tab in your browser should pick up the app activation
+9. If Crashlytics does not give a success message then uninstall the app from the simulator or connected device and then repeat steps 6-8.
+
+### PhoneGap
+You will have to manually place your configuration file in the `platforms/ios/My Project/Resources` folder of your project and hard code the app id and api key in `plugin.xml`.
+
+## How to use the plugin
+The plugin currently does not have typings.
+- Place this code before you @Component in typescript and before any other code in a javascript/jquery mobile app:
+```
+declare var CordovaFirebasePlugin: any;
+```
+
+- Example use in an application:
+```
+CordovaFirebasePlugin.setAnalyticsScreenName("Login");
+```
+
+```
+CordovaFirebasePlugin.setCrashlyticsUserID("123");
+```
+
+```
+CordovaFirebasePlugin.setAnalyticsUserID("123");
+```
+
+```
+CordovaFirebasePlugin.reportEvent("Login_Success", {timestamp:new Date()} );
+```
+
+```
+CordovaFirebasePlugin.setAnalyticsUserProperty("Role", "Admin");
+```
+### Note
+- Check out the CordovaFirebasePlugin.js file for more commands
+
+- Example Crashlytics reporting of Javascript/Typescript errors:
+```
+CordovaFirebasePlugin.reportNonFatalCrash("errorName", "errorMessage", "errorUrl", "stackTrace");
+```
+### Note
+- Native erros will be caught and reported automatically to Crashlytics
+- Also, Javascript/Non-fatal errors will be categorized by the length of the error in Crashlytics
