@@ -8,7 +8,7 @@ This plugin wraps the entire Firebase SDK with an easy to use api and detailed d
 ## Plugin Dependency
 - cordova-sqlite-storage: `>=3.2.1`
 
-### Setup Firebase
+## Setup Firebase
 1. Create a Firebase account if you don't already have one 
 2. View [Firebase setup](https://support.google.com/firebase/answer/9326094?hl=en&ref_topic=6400762) on how to add an app. 
 3. Add an ios app.
@@ -17,7 +17,7 @@ This plugin wraps the entire Firebase SDK with an easy to use api and detailed d
 6. Skip step 3 and 4 of the prompt
 7. Leave the browser open on step 5 and continue to the Project Setup below.
 
-### Project Setup for the Plugin
+## Project Setup for the Plugin
 Install the above plugin dependency if you don't already have it installed. Place your Firebase configuration file (GoogleService-Info.plist) into the root folder of your project. View [Firebase support](https://support.google.com/firebase/answer/7015592) for details on how to download the file if you did not download it in the above Firebase Setup.
 
 ```
@@ -100,4 +100,4 @@ CordovaFirebasePlugin.reportNonFatalCrash("errorName", "errorMessage", "errorUrl
 ```
 ### Note
 - Native erros will be caught and reported automatically to Crashlytics
-- Also, Javascript/Non-fatal errors will be categorized by the length of the error in Crashlytics
+- Javascript/Non-fatal errors will be categorized by the length of the error in Crashlytics
