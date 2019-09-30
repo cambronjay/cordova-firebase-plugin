@@ -1,5 +1,4 @@
 var fs = require("fs");
-//var xcode = require("xcode");
 var comment = "\"Firebase: Crashlytics\"";
 var utils = require("../utils");
 module.exports = {

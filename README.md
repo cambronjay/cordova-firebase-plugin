@@ -1,5 +1,5 @@
 # Cordova Firebase Plugin
-This plugin wraps the entire Firebase SDK with an easy to use api and detailed documentation. Follow the below instructions for setup and use.
+This plugin wraps the Firebase remote config, performance, analytics, crashlytics, messaging, and authentication SDK with an easy to use api and detailed documentation. Follow the below instructions for iOS setup and use.
 
 ## Supported Cordova Versions
 - cordova: `>= 6`

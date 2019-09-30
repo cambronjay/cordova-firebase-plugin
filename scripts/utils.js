@@ -53,7 +53,7 @@ module.exports = {
                             fs.writeFileSync(destinationPath, contents);
                         });
                     } catch (e) {
-                        // skip
+
                     }
                 } catch (err) {
                     console.log(err);

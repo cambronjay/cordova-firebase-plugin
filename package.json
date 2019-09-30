@@ -1,6 +1,6 @@
 {
   "name": "cordova-firebase-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A cordova plugin that wraps the Firebase SDK with an easy to use api.",
   "cordova": {
     "id": "cordova-firebase-plugin",
@@ -12,7 +12,7 @@
   },
   "engines": {
     "cordovaDependencies": {
-      "1.0.0": {
+      "1.0.1": {
         "cordova": ">=7.0.0",
         "cordova-android": ">=6.3.0",
         "cordova-ios": ">=4.4.0"

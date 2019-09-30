@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova-firebase-plugin" version="1.0.0" 
+<plugin id="cordova-firebase-plugin" version="1.0.1" 
     xmlns="http://apache.org/cordova/ns/plugins/1.0" 
     xmlns:android="http://schemas.android.com/apk/res/android">
     <name>Cordova Firebase Plugin</name>
@@ -20,7 +20,6 @@
     <hook type="after_platform_add" src="scripts/ios/post_plugin_add.js" />
     <hook type="before_plugin_uninstall" src="scripts/ios/pre_plugin_remove.js" />
     <dependency id="cordova-sqlite-storage" version="^3.2.1" />
-    <!-- <hook type="before_prepare" src="scripts/pre_prepare.js" /> -->
     <platform name="ios">
         <js-module name="CordovaFirebasePlugin" src="www/CordovaFirebasePlugin.js">
             <clobbers target="CordovaFirebasePlugin" />
