@@ -2,8 +2,8 @@
 This plugin wraps the Firebase remote config, performance, analytics, crashlytics, messaging, and authentication SDK with an easy to use api and detailed documentation. Follow the below instructions for iOS setup and use.
 
 ## Supported Cordova Versions
-- cordova: `>= 6`
-- cordova-ios: `>= 4`
+- cordova: `>=6.0.0 and <=8.1.2`
+- cordova-ios: `>=4.0.0 and <=5.0.0`
 
 ## Plugin Dependency
 - cordova-sqlite-storage: `>=3.2.1`

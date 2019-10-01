@@ -13,9 +13,9 @@
   "engines": {
     "cordovaDependencies": {
       "1.0.1": {
-        "cordova": ">=7.0.0",
+        "cordova": ">=6.0.0",
         "cordova-android": ">=6.3.0",
-        "cordova-ios": ">=4.4.0"
+        "cordova-ios": ">=4.0.0"
       }
     }
   },
