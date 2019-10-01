@@ -41,7 +41,7 @@ ionic cordova plugin add cordova-firebase-plugin
 ```
 or add this to your config.xml: 
 ```
-<plugin name="cordova-firebase-plugin" spec="^1.0.0" />
+<plugin name="cordova-firebase-plugin" spec="1.0.3" />
 ```
 
 ## Build the app and it will be added to Firebase
