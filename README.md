@@ -1,5 +1,5 @@
 # Cordova Firebase Plugin
-This plugin wraps the Firebase remote config, performance, analytics, crashlytics, messaging, and authentication SDK with an easy to use api and detailed documentation. Follow the below instructions for iOS setup and use.
+This plugin wraps the Firebase remote config, performance, analytics, crashlytics, messaging, and authentication SDK with an easy to use api and detailed documentation. Follow the below instructions for iOS setup and plugin use.
 
 ## Supported Cordova Versions
 - cordova: `>=6.0.0 and <=8.1.2`
@@ -66,7 +66,7 @@ You will have to manually place your configuration file in the `platforms/ios/My
 
 ## How to use the plugin
 The plugin currently does not have typings.
-- Place this code before you @Component in typescript and before any other code in a javascript/jquery mobile app:
+- Place this code before the @Component in typescript and before any other code in a javascript/jquery mobile app:
 ```
 declare var CordovaFirebasePlugin: any;
 ```
@@ -101,5 +101,5 @@ CordovaFirebasePlugin.reportNonFatalCrash("errorName", "errorMessage", "errorUrl
 - Check out the CordovaFirebasePlugin.js file for more commands
 
 ### Note
-- Native erros will be caught and reported automatically to Crashlytics
-- Javascript/Non-fatal errors will be categorized by the length of the error in Crashlytics
+- Native errors will be caught and reported automatically to Crashlytics
+- Javascript/Non-fatal errors will be categorized and grouped, in Crashlytics, by the length of the error
