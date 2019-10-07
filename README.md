@@ -65,7 +65,7 @@ or add this to your config.xml:
 ```
 CordovaFirebasePlugin.reportNonFatalCrash("Test Error Name", "Test Error Message", "Test Error URL", "Test Error Stacktrace")
 ```
-Build the app, run it with Xcode on a device/simulator, press stop in Xcode, reopen the app, run the above test crash code, exit the app, remove it from the background, and then reopen it to send the test crash.
+Build the app, run it with Xcode on a device/simulator, press stop in Xcode, reopen the app, run the above crash report code, exit the app, remove it from the background, and then reopen it to send the test crash.
 
 ### PhoneGap
 You will have to manually place your configuration file in the `platforms/ios/My Project/Resources` folder of your project and hard code the app id and api key in `plugin.xml`.
