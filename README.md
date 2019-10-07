@@ -59,11 +59,13 @@ or add this to your config.xml:
 6. Build your app and run it with Xcode on a connected device or simulator
 7. Click the stop button on Xcode and then press the play button
 8. The opened Firebase Crashlytics tab in your browser should pick up the app activation
-9. If Crashlytics does not give a success message then uninstall the app from the simulator or connected device and then repeat steps 6-8. If this does not work then proceed to step 10
-10. Send a test Non-Fatal error/crash to Crashlytics by using this command in your code: 
+9. If Crashlytics does not give a success message then uninstall the app from the simulator or connected device and then repeat steps 6-8. If this does not work then proceed to "How to send a test crash"
+
+## How to send a test crash
 ```
 CordovaFirebasePlugin.reportNonFatalCrash("Test Error Name", "Test Error Message", "Test Error URL", "Test Error Stacktrace")
 ```
+Build the app, run it with Xcode on a device/simulator, press stop in Xcode, reopen the app, run the above test crash code, exit the app, remove it from the background, and then reopen it to send the test crash.
 
 ### PhoneGap
 You will have to manually place your configuration file in the `platforms/ios/My Project/Resources` folder of your project and hard code the app id and api key in `plugin.xml`.
