@@ -41,7 +41,7 @@ ionic cordova plugin add cordova-firebase-plugin
 ```
 or add this to your config.xml: 
 ```
-<plugin name="cordova-firebase-plugin" spec="1.0.3" />
+<plugin name="cordova-firebase-plugin" spec="1.1.1" />
 ```
 
 ## Build the app and it will be added to Firebase
@@ -72,9 +72,14 @@ You will have to manually place your configuration file in the `platforms/ios/My
 
 ## How to use the plugin
 The plugin currently does not have typings.
-- Place this code before the @Component in typescript and before any other code in a javascript/jquery mobile app:
+- Place this code before the @Component in typescript:
 ```
 declare var CordovaFirebasePlugin: any;
+```
+
+- Place this code before any other code in a javascript/jquery mobile app
+```
+var CordovaFirebasePlugin;
 ```
 
 - Example use in an application:
