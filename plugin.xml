@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova-firebase-plugin" version="1.1.5" 
+<plugin id="cordova-firebase-plugin" version="1.1.6" 
     xmlns="http://apache.org/cordova/ns/plugins/1.0" 
     xmlns:android="http://schemas.android.com/apk/res/android">
     <name>Cordova Firebase Plugin</name>
@@ -60,6 +60,8 @@
         <framework src="lib/ios/fabric/Fabric.framework" custom="true" />
         <framework src="lib/ios/crashlytics/Crashlytics.framework" custom="true" />
         <!-- Analytics -->
+        <framework src="lib/ios/Firebase/Analytics/GoogleDataTransport.framework" custom="true" />
+        <framework src="lib/ios/Firebase/Analytics/GoogleDataTransportCCTSupport.framework" custom="true" />
         <framework src="lib/ios/Firebase/Analytics/FIRAnalyticsConnector.framework" custom="true" />
         <framework src="lib/ios/Firebase/Analytics/FirebaseAnalytics.framework" custom="true" />
         <framework src="lib/ios/Firebase/Analytics/FirebaseCore.framework" custom="true" />
@@ -80,6 +82,7 @@
         <framework src="lib/ios/Firebase/Messaging/FirebaseMessaging.framework" custom="true" />
         <!-- Remote Config -->
         <framework src="lib/ios/Firebase/RemoteConfig/FirebaseRemoteConfig.framework" custom="true" />
+        
         <!-- Database -->
         <!-- <framework src="lib/ios/Firebase/Database/FirebaseDatabase.framework" custom="true" />
         <framework src="lib/ios/Firebase/Database/leveldb-library.framework" custom="true" /> -->
