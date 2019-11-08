@@ -2,5 +2,4 @@ framework module GoogleDataTransportCCTSupport {
 umbrella header "GoogleDataTransportCCTSupport.h"
 export *
 module * { export * }
-  link "z"
 }
